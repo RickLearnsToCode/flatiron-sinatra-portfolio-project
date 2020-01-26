@@ -1,0 +1,22 @@
+Beer review app
+
+
+Users(Name, username, email password)
+has_many Reviews
+has_many Beers, through: Reviews
+
+Beers(Name, Brand, Style)
+has_many Reviews
+has_many Users, through: Reviews
+belongs_to Style
+
+
+
+Style(Name, Description)
+has_many Beers
+
+
+Reviews(FiveStarRating, Content)
+belongs_to Users
+belongs_to Beers
+
