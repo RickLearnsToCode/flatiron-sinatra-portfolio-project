@@ -24,12 +24,22 @@ belongs_to Beers
 ---------------------------------------------------------------------------------------
 
 Site Behavior
--Reviews: Grouped by Style on index page, Beer name links to show page.  Username shown next to each with link to user show.
--Review show page has links to user and beer
+Styles and Beers will be the two main focuses for the views.  
+
+Styles-index lists link to each style >> Clicking goes to style's show page 
+-Styles-Show page has description and list of beers in the style, with link to beer page and "add a beer" and "add a review" buttons
+-Only admin account can create or edit styles.  They will be available as a dropdown on other pages.
+
+Beers-index lists link to each beer, organized by style.  Has link to "create new beer" form.
+-Beers-Show page has Style description, followed by list of reviews, plus link to "create a review"
+-Will need all CRUD routes, per spec
+
+
+Reviews: index, show, new, and edit will all be only for user who owns the review
 -Reviews can only be edited by their user
 -Can also create a new beer from the create review form
 
--User show page displays their reviews
+-User - sign up, sign in, edit profile, sign out, 
 -No need for a Users index
 
 -Beers list of all beers grouped by style, can go to review form from this list, can add new beer if logged in
@@ -37,9 +47,6 @@ Site Behavior
 -Can write a review when adding a beer
 
 
--Styles index lists styles and each description
--Show page has description and list of beers  with link to beer page
--Only admin account can create or edit styles.  They will be available as a dropdown on other pages.
 
 Users Controller & Views:
 Create_user form - GET & POST
