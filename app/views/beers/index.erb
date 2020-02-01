@@ -1,0 +1,10 @@
+<h2>Beers by Style</h2>
+
+<% Style.all.each do |style| %>
+    <h3><%= style.name %>: </h3>
+        <ul>
+            <% style.beers.each do |beer| %>
+                <li><a href="/beers/<%= beer.id %>"><%= beer.name %></a></li>
+            <% end %>
+        </ul>
+<% end %>
