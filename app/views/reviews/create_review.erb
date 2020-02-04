@@ -1,9 +1,14 @@
 <h2>Write a Review</h2>
 <form action="/reviews" method="POST">
+<h3>Beer: <select name="beer_id">
 <% if !!@beer %>
-#Prepopulate drop down with selected beer
+    <option value="<%= @beer.id %>"><%= @beer.name %> - <%= @beer.brand %></option>
 <% end %>
-#Otherwise populate dropdown list with all known beers
+<% Beer.all.each do |beer| %>
+    <option value="<%= beer.id %>"><%= beer.name %> - <%= beer.brand %></option>
+<% end %>
+</select></h3>
+
 #Offer ability to create new beer
 
 <button type="submit">Submit</button>
