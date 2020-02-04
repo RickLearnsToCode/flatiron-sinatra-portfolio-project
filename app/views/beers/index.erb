@@ -4,7 +4,7 @@
     <h3><%= style.name %>: </h3>
         <ul>
             <% style.beers.each do |beer| %>
-                <li><a href="/beers/<%= beer.id %>"><%= beer.name %> - <%= beer.brand %></a></li>
+                <li><a href="/beers/<%= beer.id %>"><%= beer.name %> - <%= beer.brand %></a><!--<a href="/reviews/new?beer_id=<%= beer.id %>"> |  Write a Review</a>--></li>
             <% end %>
         </ul>
 <% end %>

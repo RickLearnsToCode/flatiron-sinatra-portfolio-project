@@ -1,0 +1,10 @@
+<h2>Write a Review</h2>
+<form action="/reviews" method="POST">
+<% if !!@beer %>
+#Prepopulate drop down with selected beer
+<% end %>
+#Otherwise populate dropdown list with all known beers
+#Offer ability to create new beer
+
+<button type="submit">Submit</button>
+</form>
