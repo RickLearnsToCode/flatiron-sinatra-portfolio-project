@@ -1,16 +1,16 @@
 <h2>Write a Review</h2>
 <form action="/reviews" method="POST">
 
-<h3>Beer: <select name="beer_id">
+<h3>Select Beer: <select name="review[beer_id]">
 <% if !!@beer %>
-    <option value="<%= @beer.id %>" name="review[beer_id]"><%= @beer.name %> - <%= @beer.brand %></option>
+    <option value="<%= @beer.id %>" ><%= @beer.name %> - <%= @beer.brand %></option>
     <% Beer.all.each do |beer| %>
-        <option value="<%= beer.id %>" name="review[beer_id]"><%= beer.name %> - <%= beer.brand %></option>
+        <option value="<%= beer.id %>"><%= beer.name %> - <%= beer.brand %></option>
     <% end %>
 <% else %>
     <option value="none">Select a Beer to Review</option>
     <% Beer.all.each do |beer| %>
-        <option value="<%= beer.id %>" name="review[beer_id]"><%= beer.name %> - <%= beer.brand %></option>
+        <option value="<%= beer.id %>"><%= beer.name %> - <%= beer.brand %></option>
     <% end %>
 <% end %>
 </select></h3>
@@ -18,14 +18,23 @@
 <p>Or Add a New Beer</p>
 <p>Name:<input type="text" id="beer_name" name="beer[name]"></p>
 <p>Brand:<input type="text" id="beer_brand" name="beer[brand]"></p>
-<p>Style: <select name="style_id">
+<p>Style: <select name="beer[style_id]">
     <% Style.all.each do |style| %>
-        <option value="<%= style.id %>" name="beer[style_id]"><%= style.name %></option>
+        <option value="<%= style.id %>"><%= style.name %></option>
     <% end %>
 </select></p>
+<br>
 
+<p>Rating: 
+    <select name="review[five_star_rating]">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+<textarea rows="5" cols="75" name="review[content]">Please enter your review here</textarea><br>
 
-#Offer ability to create new beer
 
 <button type="submit">Submit</button>
 </form>
