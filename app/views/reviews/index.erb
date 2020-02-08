@@ -1,7 +1,7 @@
 
 <h2>Reviews by User</h2>
 
-<% @usersWithReviews = Review.all.map {|r| r.user} %>
+<% @usersWithReviews = Review.all.map {|r| r.user}.uniq %>
 <% @usersWithReviews.each do |user| %>
     <h3><%= user.username %>:</h3>
     <% user.reviews.each do |review| %>

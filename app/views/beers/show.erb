@@ -8,7 +8,7 @@
     <p>Rating: <%= review.five_star_rating %></p>
     <p>Content: <%= review.content %></p>
     <% if review.user == current_user %>
-        <a href="/reviews/#{review.id}/edit">Edit</a>
+        <a href="/reviews/<%= review.id %>/edit">Edit</a>
     <% end %><br>
 <% end %>
 

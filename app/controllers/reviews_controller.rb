@@ -3,6 +3,14 @@ class ReviewsController < ApplicationController
     get '/reviews' do
         erb :'/reviews/index'
     end
+    
+    get '/reviews/new' do
+        # binding.pry
+        if !!params[:beer_id]
+            @beer = Beer.find_by_id(params[:beer_id])
+        end
+        erb :'reviews/create_review'
+    end
 
     get '/reviews/:id' do
         @review = Review.find_by_id(params[:id])
@@ -22,16 +30,6 @@ class ReviewsController < ApplicationController
         erb :'/reviews/show'
     end
 
-    
-    
-    
-    get '/reviews/new' do
-        # binding.pry
-        if !!params[:beer_id]
-            @beer = Beer.find_by_id(params[:beer_id])
-        end
-        erb :'reviews/create_review'
-    end
 
     post '/reviews' do
         # binding.pry
@@ -53,8 +51,5 @@ class ReviewsController < ApplicationController
             redirect to '/users/login'
         end
     end
-
-
-
 
 end
