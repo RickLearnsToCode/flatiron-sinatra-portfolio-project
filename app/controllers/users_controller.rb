@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       # binding.pry
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect to "/beers"
+        redirect to "/"
       else
         redirect to '/signup'
       end
