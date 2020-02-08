@@ -9,7 +9,21 @@ class ReviewsController < ApplicationController
         erb :'/reviews/show'
     end
 
+    get '/reviews/:id/edit' do
+        @review = Review.find_by_id(params[:id])
+        erb :'/reviews/edit'
+    end
 
+    patch '/reviews/:id' do
+        @review = Review.find_by_id(params[:id])
+        @review.five_star_rating = params[:review][:five_star_rating]
+        @review.content = params[:review][:content]
+        @review.save
+        erb :'/reviews/show'
+    end
+
+    
+    
     
     get '/reviews/new' do
         # binding.pry
