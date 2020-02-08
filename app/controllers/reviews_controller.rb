@@ -10,13 +10,15 @@ class ReviewsController < ApplicationController
     post '/reviews' do
         # binding.pry
         if logged_in?
-            if !!params[:beer]
+            # binding.pry
+            if !params[:beer][:name].empty? && !params[:beer][:brand].empty?
                 @beer = Beer.new(params[:beer])
                 @beer.save
                 @review = Review.new(user_id: current_user.id, beer_id: @beer.id, five_star_rating: params[:review][:five_star_rating], content: params[:review][:content])
                 @review.save 
             else
-                @review = Review.new(params[review])
+                @beer = Beer.find_by_id(params[:review][:beer_id])
+                @review = Review.new(params[:review])
                 @review.user = current_user
                 @review.save
             end

@@ -3,9 +3,13 @@
 <h3>Style: <a href="/styles/<%= @beer.style.id %>"><%=@beer.style.name %></a></h3>
 <h3>Reviews</h3>
 <% @beer.reviews.each do |review| %>
+    <hr>
     <p>By User: <a href="/users/<%= review.user.id %>"><%= review.user.username %></a></p>
     <p>Rating: <%= review.five_star_rating %></p>
-    <p>Content: <%= review.content %></p><br>
+    <p>Content: <%= review.content %></p>
+    <% if review.user == current_user %>
+        <a href="/reviews/#{review.id}/edit">Edit</a>
+    <% end %><br>
 <% end %>
 
 <h3><a href="/reviews/new?beer_id=<%= @beer.id %>">Add a Review</a> </h3>
