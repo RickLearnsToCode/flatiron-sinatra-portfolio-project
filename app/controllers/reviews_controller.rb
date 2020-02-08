@@ -41,6 +41,7 @@ class ReviewsController < ApplicationController
                 @review = Review.new(user_id: current_user.id, beer_id: @beer.id, five_star_rating: params[:review][:five_star_rating], content: params[:review][:content])
                 @review.save 
             else
+                # binding.pry 
                 @beer = Beer.find_by_id(params[:review][:beer_id])
                 @review = Review.new(params[:review])
                 @review.user = current_user
@@ -48,7 +49,7 @@ class ReviewsController < ApplicationController
             end
             redirect to "/beers/#{@beer.id}"
         else
-            redirect to '/users/login'
+            redirect to '/login'
         end
     end
 

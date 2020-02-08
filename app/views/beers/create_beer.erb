@@ -1,0 +1,14 @@
+<h2>Add a New Beer</h2>
+
+<form action="/beers" method="POST">
+<label for="beer_name">Name: </label><input type="text" name="beer[name]" id="beer_name"><br>
+<label for="beer_brand">Brewery: </label><input type="text" name="beer[brand]" id="beer_brand"><br>
+<label for="beer_style">Style: </label>
+<select id="beer_style" name="beer[style_id]">
+    <% Style.all.each do |style| %>
+        <option value="<%= style.id %>"><%= style.name %></option>
+    <% end %>
+</select><br>
+
+<button type="submit">Add Beer</button>
+</form>
