@@ -1,0 +1,11 @@
+
+<h2>Reviews by User</h2>
+
+<% @usersWithReviews = Review.all.map {|r| r.user} %>
+<% @usersWithReviews.each do |user| %>
+    <h3><%= user.username %>:</h3>
+    <% user.reviews.each do |review| %>
+        <a href="/reviews/<%= review.id %>"><%= review.beer.name %> - <%= review.beer.brand %></a>
+    <% end %>
+
+<% end %>

@@ -1,4 +1,16 @@
 class ReviewsController < ApplicationController
+    
+    get '/reviews' do
+        erb :'/reviews/index'
+    end
+
+    get '/reviews/:id' do
+        @review = Review.find_by_id(params[:id])
+        erb :'/reviews/show'
+    end
+
+
+    
     get '/reviews/new' do
         # binding.pry
         if !!params[:beer_id]
