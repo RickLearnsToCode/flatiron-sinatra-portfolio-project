@@ -3,8 +3,6 @@
 <h2>Rating: <%= @review.five_star_rating %> Stars</h2>
 <h2>Content: </h2><%= @review.content %><br>
 
-<a href="/beers"> Beers</a> |
-<a href="/reviews">Reviews</a>
 <% if logged_in? && @review.user == current_user %>
-    | <a href="/reviews/<%= @review.id %>/edit">Edit Review</a>
+    <a href="/reviews/<%= @review.id %>/edit">Edit Review</a>
 <% end %>
