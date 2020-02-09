@@ -20,6 +20,12 @@ class UsersController < ApplicationController
       elsif !!User.find_by(email: params[:email]) || !!User.find_by(username: params[:username])
         flash[:message] = "The email or username already exists"
         redirect to '/signup'
+      elsif !is_valid_email?(params[:email])
+        flash[:message] = "Email address is an invalid format"
+        redirect to '/signup'
+      elsif !is_valid_text_input?(params[:name]) || !is_valid_text_input?(params[:username]) || !is_valid_text_input?(params[:password])
+        flash[:message] = "Inputs may not exceed 35 characters"  
+        redirect to '/signup'
       else
         @user = User.new(:name => params[:name], :username => params[:username], :email => params[:email], :password => params[:password])
         @user.save
