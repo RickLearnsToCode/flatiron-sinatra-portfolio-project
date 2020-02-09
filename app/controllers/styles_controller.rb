@@ -8,7 +8,7 @@ class StylesController < ApplicationController
         if logged_in? && current_user.id == 1
             erb :'/styles/create_style'
         else
-            flash[:message] = "Only an administrator can add styles"
+            flash.now[:message] = "Only an administrator can add styles"
             erb :'/styles/index'
         end
     end

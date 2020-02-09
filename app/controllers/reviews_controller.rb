@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
         if logged_in?
             erb :'reviews/create_review'
         else
-            flash[:message] = "You must be logged in to add a review"
+            flash.now[:message] = "You must be logged in to add a review"
             erb :'/index'
         end
     end
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
         if @review.user == current_user
             erb :'/reviews/edit'
         else
-            flash[:message] = "You may not edit another user's review"
+            flash.now[:message] = "You may not edit another user's review"
             erb :"/reviews/show"
         end
     end

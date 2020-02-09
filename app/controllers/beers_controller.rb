@@ -7,7 +7,7 @@ class BeersController < ApplicationController
         if logged_in?
             erb :'/beers/create_beer'
         else
-            flash[:message] = "You must be logged in to add a beer"
+            flash.now[:message] = "You must be logged in to add a beer"
             erb :'/index'
         end
     end
