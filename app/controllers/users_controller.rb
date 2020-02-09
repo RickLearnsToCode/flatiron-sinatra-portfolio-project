@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   
     get '/signup' do
       if !logged_in?
-        erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
+        # flash[:message] = "Please sign up before you sign in" unless flash.has?(:message)
+        erb :'users/create_user'
       else
         redirect to '/beers'
       end
@@ -14,6 +15,10 @@ class UsersController < ApplicationController
   
     post '/signup' do
       if params[:name] == "" || params[:username] == "" || params[:email] == "" || params[:password] == ""
+        flash[:message] = "Fields may not be blank"
+        redirect to '/signup'
+      elsif !!User.find_by(email: params[:email]) || !!User.find_by(username: params[:username])
+        flash[:message] = "The email or username already exists"
         redirect to '/signup'
       else
         @user = User.new(:name => params[:name], :username => params[:username], :email => params[:email], :password => params[:password])

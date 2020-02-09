@@ -1,5 +1,7 @@
-<% unless locals.empty? %>
-  <%#= message %>
+<% if flash.has?(:message) %>
+<div class="alert alert-danger" role="alert">
+  <br><%= flash[:message] %>
+</div>
 <% end %>
 
 
