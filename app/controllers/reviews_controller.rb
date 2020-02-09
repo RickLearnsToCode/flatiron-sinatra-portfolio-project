@@ -12,15 +12,22 @@ class ReviewsController < ApplicationController
         erb :'reviews/create_review'
     end
 
+    get '/reviews/:id/edit' do
+        @review = Review.find_by_id(params[:id])
+        if @review.user == current_user
+            erb :'/reviews/edit'
+        else
+            flash[:message] = "You may not edit another user's review"
+            erb :"/reviews/show"
+        end
+    end
+    
     get '/reviews/:id' do
         @review = Review.find_by_id(params[:id])
         erb :'/reviews/show'
     end
 
-    get '/reviews/:id/edit' do
-        @review = Review.find_by_id(params[:id])
-        erb :'/reviews/edit'
-    end
+
 
     patch '/reviews/:id' do
         @review = Review.find_by_id(params[:id])
