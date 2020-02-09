@@ -5,7 +5,12 @@ class StylesController < ApplicationController
     end
 
     get '/styles/new' do
-        erb :'/styles/create_style'
+        if current_user.id == 1
+            erb :'/styles/create_style'
+        else
+            flash[:message] = "Only an administrator can add styles"
+            redirect to "/styles"
+        end
     end
 
     post '/styles' do

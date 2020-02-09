@@ -1,3 +1,9 @@
+<% if flash.has?(:message) %>
+<div class="alert alert-danger" role="alert">
+  <br><%= flash[:message] %>
+</div>
+<% end %>
+
 <h2>Beer Styles</h2>
 <ul>
 <% Style.all.each do |style| %>

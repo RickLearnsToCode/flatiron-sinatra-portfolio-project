@@ -1,7 +1,4 @@
 
-<% if !current_user.id == 1 %>
-    <% redirect to '/styles' %>
-<% end %>
 <h2>Add a New Beer Style</h2>
 <form action="/styles" method="post">
 <label for="style_name">Name: </label>
