@@ -5,11 +5,11 @@ class StylesController < ApplicationController
     end
 
     get '/styles/new' do
-        if current_user.id == 1
+        if logged_in? && current_user.id == 1
             erb :'/styles/create_style'
         else
             flash[:message] = "Only an administrator can add styles"
-            redirect to "/styles"
+            erb :'/styles/index'
         end
     end
 
@@ -21,7 +21,7 @@ class StylesController < ApplicationController
 
 
     get '/styles/:id/edit' do
-        if current_user.id == 1
+        if logged_in? && current_user.id == 1
             @style = Style.find_by_id(params[:id])
             erb :'/styles/edit'
         else
@@ -31,7 +31,7 @@ class StylesController < ApplicationController
     end
 
     patch '/styles/:id' do
-        if current_user.id == 1
+        if logged_in? && current_user.id == 1
             @style = Style.find_by_id(params[:id])
             @style.name = params[:style][:name]
             @style.description = params[:style][:description]

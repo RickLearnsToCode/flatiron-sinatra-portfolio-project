@@ -10,7 +10,7 @@
     <h3><li><a href="/styles/<%= style.id %>"><%= style.name %></a></h3></li>
 <% end %>
 </ul>
-<% if current_user.username == "admin" %>
+<% if logged_in? && current_user.id == 1 %>
     <h2><a href="/styles/new">Add a Style</a></h2>
 <% end %>
 

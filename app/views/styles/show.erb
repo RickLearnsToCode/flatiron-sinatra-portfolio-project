@@ -1,5 +1,5 @@
 <h2><%= @style.name %></h2>
 <p><%= @style.description %></p>
-<% if current_user.id == 1 %>
+<% if logged_in? && current_user.id == 1 %>
     <a href="/styles/<%= @style.id %>/edit">Edit Style</a>
 <% end %>

@@ -9,7 +9,12 @@ class ReviewsController < ApplicationController
         if !!params[:beer_id]
             @beer = Beer.find_by_id(params[:beer_id])
         end
-        erb :'reviews/create_review'
+        if logged_in?
+            erb :'reviews/create_review'
+        else
+            flash[:message] = "You must be logged in to add a review"
+            erb :'/index'
+        end
     end
 
     get '/reviews/:id/edit' do
