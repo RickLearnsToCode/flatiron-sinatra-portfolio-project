@@ -1,0 +1,1 @@
+You may use, reuse, build upon and share all of the content in this application without restriction.
