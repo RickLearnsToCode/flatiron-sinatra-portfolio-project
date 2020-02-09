@@ -4,7 +4,7 @@
 <h3>Reviews</h3>
 <% @beer.reviews.each do |review| %>
     <hr>
-    <p>By User: <a href="/users/<%= review.user.id %>"><%= review.user.username %></a></p>
+    <p>By User: <%= review.user.username %></p>
     <p>Rating: <%= review.five_star_rating %></p>
     <p>Content: <%= review.content %></p>
     <% if review.user == current_user %>
