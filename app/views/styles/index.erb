@@ -1,0 +1,10 @@
+<h2>Beer Styles</h2>
+<ul>
+<% Style.all.each do |style| %>
+    <h3><li><a href="/styles/<%= style.id %>"><%= style.name %></a></h3></li>
+<% end %>
+</ul>
+<% if current_user.username == "admin" %>
+    <h2><a href="/styles/new">Add a Style</a></h2>
+<% end %>
+

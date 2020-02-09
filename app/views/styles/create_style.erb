@@ -1,0 +1,14 @@
+
+<% if !current_user.id == 1 %>
+    <% redirect to '/styles' %>
+<% end %>
+<h2>Add a New Beer Style</h2>
+<form action="/styles" method="post">
+<label for="style_name">Name: </label>
+<input type="text" id="style_name" name="style[name]"><br>
+<label for="style_description">Description</label><br>
+<textarea rows="5" cols="75" id="style_description" name="style[description]">Enter your Description Here</textarea><br>
+
+
+<button type="submit">Add Style</button>
+</form>
