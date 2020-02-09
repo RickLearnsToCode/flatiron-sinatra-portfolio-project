@@ -16,9 +16,25 @@ class StylesController < ApplicationController
 
 
     get '/styles/:id/edit' do
-        @style = Style.find_by_id(params[:id])
-        erb :'/styles/edit'
+        if current_user.id == 1
+            @style = Style.find_by_id(params[:id])
+            erb :'/styles/edit'
+        else
+            redirect to "/styles/#{params[:id]}"
+        end
+
     end
+
+    patch '/styles/:id' do
+        if current_user.id == 1
+            @style = Style.find_by_id(params[:id])
+            @style.name = params[:style][:name]
+            @style.description = params[:style][:description]
+            @style.save
+        end
+        redirect to "/styles/#{params[:id]}"
+    end
+
 
 
     get '/styles/:id' do

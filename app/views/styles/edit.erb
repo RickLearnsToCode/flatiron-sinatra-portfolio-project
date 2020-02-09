@@ -1,0 +1,9 @@
+<form action="/styles/<%= @style.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<label for="name">Name: </label><input type="text" id="name" name="style[name]" value="<%= @style.name %>"></input><br>
+<label for="description">Description</label><br>
+<textarea rows="4" cols="75" id="description" name="style[description]"><%= @style.description %></textarea><br>
+
+<button type="submit">Update Style</button>
+</form>
+<a href="/styles/<%= @style.id %>">Cancel</a>
