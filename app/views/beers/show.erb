@@ -12,4 +12,6 @@
     <% end %><br>
 <% end %>
 
+<% if logged_in? %>
 <h3><a href="/reviews/new?beer_id=<%= @beer.id %>">Add a Review</a> </h3>
+<% end %>

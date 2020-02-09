@@ -1,73 +1,19 @@
-Beer review app
+Walkthrough
 
-
-Users(Name, username, email password)
-has_many Reviews
-has_many Beers, through: Reviews
-
-Beers(Name, Brand, Style)
-has_many Reviews
-has_many Users, through: Reviews
-belongs_to Style
-
-
-
-Style(Name, Description)
-has_many Beers
-
-
-Reviews(FiveStarRating, Content)
-belongs_to Users
-belongs_to Beers
-
-
----------------------------------------------------------------------------------------
-
-Site Behavior
-Styles and Beers will be the two main focuses for the views.  
-
-Styles-index lists link to each style >> Clicking goes to style's show page 
--Styles-Show page has description and list of beers in the style, with link to beer page and "add a beer" and "add a review" buttons
--Only admin account can create or edit styles.  They will be available as a dropdown on other pages.
-
-Beers-index lists link to each beer, organized by style.  Has link to "create new beer" form.
--Beers-Show page has Style description, followed by list of reviews, plus link to "create a review"
--Will need all CRUD routes, per spec
-
-
-Reviews: index, show, new, and edit will all be only for user who owns the review
--Reviews can only be edited by their user
--Can also create a new beer from the create review form
-
--User - sign up, sign in, edit profile, sign out, 
--No need for a Users index
-
--Beers list of all beers grouped by style, can go to review form from this list, can add new beer if logged in
--any logged in user can add a beer from the index page
--Can write a review when adding a beer
-
-
-
-Users Controller & Views:
-Create_user form - GET & POST
- -Signup page & route
- -Redirect to Reviews index?
-
-Edit form - GET & PATCH
- -Edit page & route
- -Redirect to Reviews index
-
-Login form - GET & POST
- -Redirect to Reviews index
-
-All Users - GET
-Show User - GET
-Destroy User - DELETE
-
-Beers Controller & Views:
-Create_beer form - GET & POST
- -
-Edit form - GET & POST
+1. Begin with fresh app and newly seeded db
+2. Go to home page, do not log in
+3. Go to Beers
+    -Note the lack of "Add a Beer" button
+    -show what happens if you try to go to beers/new
+4. Repeat with Reviews and Styles
+    -Note that you can only add styles as admin
+5. Sign up with too many characters
+6. Sign up with bad email address
+7. Sign up regular test account
+8. Go back through Beers, Reviews, Styles
+9. Add a review
+10. Edit the review
+11. Delete the review
 
 
 
